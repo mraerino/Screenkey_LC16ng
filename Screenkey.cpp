@@ -333,7 +333,7 @@ void Screenkey::print_char(uint8_t x, uint8_t y, unsigned char c) {
 
 
 void Screenkey::inc_txtline() {
-    cursor_y -= pgm_read_byte(font + 1);
+    cursor_y += pgm_read_byte(font + 1);
 }
 
 void Screenkey::set_cursor(uint8_t x, uint8_t y) {
