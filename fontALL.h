@@ -5,5 +5,6 @@
 #include "font6x8.h"
 #include "font8x8.h"
 #include "font8x8ext.h"
+#include "font5x7.h"
 
 #endif
