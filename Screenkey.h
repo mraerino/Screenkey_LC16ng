@@ -84,6 +84,8 @@
 //Define LCD Size
 #define XRES       32
 #define YRES       16
+#define BUFXRES    36
+#define BUFYRES    16
 #define BUFSIZE    72
 // Global Variables for writing to screenkeys
 extern volatile uint8_t phase;
