@@ -305,11 +305,13 @@ void Screenkey::bitmap(uint8_t x, uint8_t y, const unsigned char *bmp,
 //		width = width/8;
 //	}
 
+    // loop over lines
     for (uint8_t h = 0; h < height; h++) {
         temp = pgm_read_byte((uint32_t)(bmp) + i++);
 
+        // loop over rows
         for (uint8_t b = 0; b < width; b++) {
-            if (temp & (0x80 >> b)) set_pixel(x + b, y - h);
+            if (temp & (0x80 >> b)) set_pixel(x + b, y + h);
         }
     }
 } // end of bitmap
