@@ -142,18 +142,14 @@ void Screenkey::refresh() {
 void Screenkey::set_pixel(uint8_t x, uint8_t y) {
     int _bitnum, _buff_byte, _buff_bit;
 
-//    if (x > XRES || y > YRES) {
-//		return;
-//    }
-//    else {
-        // for (_bitnum=0; _bitnum<864; _bitnum++)
-        // {
+    if (x > XRES || y > YRES) {
+		return;
+    } else {
         _bitnum = (x) + (y*BUFXRES);
         _buff_byte = _bitnum / 8;
         _buff_bit = _bitnum % 8;
         dwg_buff[_buff_byte] |= (1 << _buff_bit);
-        //  }
-//    }
+    }
 
 }
 
