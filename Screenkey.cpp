@@ -98,7 +98,7 @@ void Screenkey::screenkey_write_img(uint8_t *data) {
 }
 
 
-bool Screenkey::set_next_bit() {
+void Screenkey::set_next_bit() {
     if(!cnt)
         return;
 
@@ -108,11 +108,6 @@ bool Screenkey::set_next_bit() {
     // shift out of queue
     bits = bits >> 1;
     cnt--;
-}
-
-
-bool Screenkey::isAvailable() {
-    return cnt > 0;
 }
 
 
