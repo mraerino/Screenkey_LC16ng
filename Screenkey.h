@@ -87,10 +87,6 @@
 #define BUFXRES    36
 #define BUFYRES    16
 #define BUFSIZE    72
-// Global Variables for writing to screenkeys
-extern volatile uint8_t phase;
-extern volatile uint16_t bits;
-extern volatile uint8_t cnt;
 
 
 class Screenkey {
@@ -102,6 +98,8 @@ public:
     void set_color(uint8_t color);
 
     void init();
+
+    void set_next_bit();
 
     void refresh();
 
@@ -202,6 +200,8 @@ public:
 private:
     int _pin;
     int _bitnum;
+    uint16_t bits;
+    uint8_t cnt;
     unsigned char dwg_buff[BUFSIZE];   // Ram used as a drawing buffer
     uint8_t cursor_x, cursor_y;
     const unsigned char *font;

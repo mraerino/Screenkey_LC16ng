@@ -98,6 +98,24 @@ void Screenkey::screenkey_write_img(uint8_t *data) {
 }
 
 
+bool Screenkey::set_next_bit() {
+    if(!cnt)
+        return;
+
+    // set bit state
+    digitalWrite(_pin, (bits & 1) ? HIGH : LOW);
+
+    // shift out of queue
+    bits = bits >> 1;
+    cnt--;
+}
+
+
+bool Screenkey::isAvailable() {
+    return cnt > 0;
+}
+
+
 void Screenkey::fill() {
 
     uint8_t i;
@@ -108,7 +126,6 @@ void Screenkey::fill() {
 
 
 void Screenkey::clear() {
-
     uint8_t i;
     for (i = 0; i < BUFSIZE; i++)
         dwg_buff[i] = 0x00;
@@ -127,12 +144,9 @@ void Screenkey::init() {
 }
 
 void Screenkey::load_img(uint8_t *data) {
-// dwg_buff = data;
     uint8_t i;
     for (i = 0; i < BUFSIZE; i++)
         dwg_buff[i] = data[i];
-
-
 }
 
 void Screenkey::refresh() {
